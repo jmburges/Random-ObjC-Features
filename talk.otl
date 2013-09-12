@@ -1,0 +1,35 @@
+Requirements
+	25 minutes
+	Sep 17th
+Overview
+	Explain Objective-C
+		explain Clang and LLVM
+	Literals
+		Numbers
+		Collections
+		Strings (boooooring)
+	Object Subscripting
+		use key in NSDictionary
+			myDic["name"]= @"joe"
+			array[0]=@"joe"
+	Message Forwarding
+		Using methodSignatureForSelector and forwardInvocation
+		Code Sample
+			Find_by_* methods?
+	C Features
+		Structs
+		#defines
+		typedef enums
+			These are old, use NS_ENUM
+	Don't use C Structs
+		Use methods
+	Don't use a lot of #defines
+		Use extern const
+		unless you reallly need the context you are in
+	@import - modules
+		fragility
+			same reason #defines are scary
+		Scalability
+		How to make your modules
+		
+		
