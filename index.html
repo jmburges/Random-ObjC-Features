@@ -37,12 +37,194 @@
 			<div class="slides">
 
 				<section>
-					<h1>Test</h1>
+					<h1>Objective-C</h1>
+          <h3>Extra Features</h3>
 					<p>
           <small>Created by Joe Burgess</small>
 					</p>
 				</section>
 
+        <section>
+          <h1>Who Am I</h1>
+          <small>Teacher at <a href="http://flatironschool.com/iOScurriculum.html">The Flatiron School</a></small>
+        </section>
+
+        <section>
+          <h1>Preface</h1>
+        </section>
+
+        <section>
+          <h2>Quick word about CLang and LLVM</h2>
+          <br />
+          <p><strong>LLVM</strong>: Modern extensible compiler<br />
+          <strong>CLang</strong>: C language family frontend for LLVM</p>
+        </section>
+
+        <section>
+        <h2>Literals</h2>
+        <p>Why don't more people use these?</p>
+        </section>
+
+        <section>
+        <h2>Numbers</h2>
+        <pre><code>NSNumber *fortytwo = @42
+NSNumber *pi = @3.1415926535</code></pre>
+      </section>
+
+      <section>
+        <p>Add in <code>f</code> for float and a <code>l</code> for long</p>
+
+        <pre><code>NSNumber *fortytwoLong = @42L
+NSNumber *pi = @3.1415926535F</code></pre>
+      </section>
+
+      <section>
+        <h2>One more thing</h2>
+        <pre><code>NSNumber *threeOverTwo = @(3 / 2);</code></pre>
+      </section>
+
+      <section>
+        <h2>Collections - Arrays</h2>
+        <pre><code>NSArray *array = @[ @"Hello", @"World"];</code></pre>
+      </section>
+
+      <section>
+        <h2>Collections - Dictionaries</h2>
+        <pre><code>NSArray *dictionary = @{
+@"message" : @"Hello, World!"
+@"sender"  : @"Joe Burgess"
+};</pre></code>
+      </section>
+
+      <section>
+        <p>These are all immutable</p>
+      </section>
+
+      <section>
+        <h2>Object Substring</h2>
+        <ul>
+          <li>Custom Index Subscripting</li>
+          <pre><code>array[0]=@"bar"</code></pre>
+          <li>Custom Keyed Subscripting</li>
+          <pre><code>dictionary[@"foo"]=@"bar"</code></pre>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Custom Index Subscripting</h2>
+        <pre><code>- (id)objectAtIndexedSubscript:(NSUInteger)idx;
+- (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;</code></pre>
+      </section>
+
+      <section>
+        <h2>Custom Keyed Subscripting</h2>
+        <pre><code>- (id)objectForKeyedSubscript:(id <NSCopying>)key;
+- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;</code></pre>
+      </section>
+
+      <section>
+        <h2>Dot Notation Is Important!</h2>
+        <pre><code>[[class[@"teachers"] lastObject] firstName]</code></pre>
+      </section>
+
+      <section>
+        <h2>Message Forwarding</h2>
+        <p>just like <code>methodMissing</code> in Ruby</p>
+      </section>
+
+      <section>
+        <h2>Methods</h2>
+        <pre><code>-(NSMethodSignature*)methodSignatureForSelector:(SEL)sel</pre></code>
+        <pre><code>-(void)forwardInvocation:(NSInvocation*)inv</pre></code>
+      </section>
+
+      <section>
+        <h2>NSMethodSignature</h2>
+        <p>Tells Objective-C the method signature just like in your header files</p>
+      </section>
+
+      <section>
+        <h2>NSInvocation</h2>
+        <p>Actually does the method.</p>
+      </section>
+
+      <section>
+        <h1>Objective-C is C</h1>
+      </section>
+
+      <section>
+        <h2>Structs</h2>
+        <pre><code>struct
+{
+double lat;
+double long;
+} point</pre></code>
+      </section>
+
+      <section>
+        <h2>Don't use them</h2>
+        <pre><code>@interface point : NSObject
+{
+@public
+    @property double lat;
+    @property double long;
+} 
+@end</pre></code>
+      </section>
+
+      <section>
+        <h2>#defines</h2>
+        <pre><code>#define MAX_USERS ((int) 42)</pre></code>
+      </section>
+
+      <section>
+        <h2>Don't Use Them</h2>
+        <pre><code>// in a header
+extern const int MAX_USERS;
+// in a C file
+const int MAX_USERS = 42;</pre></code>
+      </section>
+
+      <section>
+        <h1>New Stuff</h1>
+        <small>Introduced in recent versions of Clang</small>
+      </section>
+      
+      <section>
+        <h2>#includes suck</h2>
+        <ul>
+          <li>Recursive import means they are slow</li>
+          <li>If the file name changes... :(</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Use @include!</h2>
+        <ul>
+          <li>It's more of an API to a library.</li>
+          <li>Supports autolinking!</li>
+          <li>Everything is cached!</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>It's Easy</h2>
+        <pre><code>@import MapKit.MKMapView</pre></code>
+      </section>
+
+      <section>
+        <h2>Implement your own</h2>
+        <p>You can't. Only Apple can. Lame.</p>
+      </section>
+
+      <section>
+        <img src="img/modules.png" alt="Modules" />
+      </section>
+
+      <section>
+      <h1>Thanks!</h1>
+      <small>This is all on my github @jmburges</small>
+      </section>
 			</div>
 
 		</div>
@@ -56,7 +238,7 @@
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
